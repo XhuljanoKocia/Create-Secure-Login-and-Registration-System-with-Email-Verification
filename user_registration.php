@@ -1,3 +1,5 @@
+<?php require_once("Include/styles.css"); ?>
+<?php require_once("Include/db.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +9,15 @@
   <title>Register Now</title>
 </head>
 <body>
-  <form action="user_registration.php" method="post"></form>
+  <div id="centerpage">
+    <form action="user_registration.php" method="post">
+      <fieldset>
+        <span class="FieldInfo">Username:</span><br><input type="text" name="Username" value=""><br>
+        <span class="FieldInfo">Email:</span><br><input type="email" name="Email" value=""><br>
+        <span class="FieldInfo">Password:</span><br><input type="password" name="Password" value=""><br>
+        <span class="FieldInfo">Confirm Password:</span><br><input type="password" name="ConfirmPassword" value=""><br>
+        <input type="Submit" name="Submit" value="Register"><br>
+    </form>
+  </div>
 </body>
 </html>
