@@ -1,5 +1,8 @@
 <?php require_once("Include/styles.css"); ?>
+<<<<<<< HEAD
 <?php require_once("Include/db.php"); ?>
+=======
+>>>>>>> d789fcea59ca735d9e18f5d8fad5eefb0d922a6b
 <!DOCTYPE html>
 <html lang="en">
 <head>
