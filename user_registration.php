@@ -1,8 +1,16 @@
 <?php require_once("Include/styles.css"); ?>
-<<<<<<< HEAD
 <?php require_once("Include/db.php"); ?>
-=======
->>>>>>> d789fcea59ca735d9e18f5d8fad5eefb0d922a6b
+
+<?php
+  //We get all the information from the user once he completes the form via POST superglobal method and use mysqli_real_escape_string to prevent sql injection
+  if(isset($_POST["Submit"])){
+    $Username = mysqli_real_escape_string($_POST["Username"]);
+    $Email = mysqli_real_escape_string($_POST["Email"]);
+    $Password = mysqli_real_escape_string($_POST["Password"]);
+    $ConfirmPassword = mysqli_real_escape_string($_POST["ConfirmPassword"]);
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +21,7 @@
 </head>
 <body>
   <div id="centerpage">
+    <!-- We create a simple registration form -->
     <form action="user_registration.php" method="post">
       <fieldset>
         <span class="FieldInfo">Username:</span><br><input type="text" name="Username" value=""><br>
