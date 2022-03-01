@@ -1,4 +1,10 @@
 <?php
+  //Redirect function
+  function Redirect_To($NewLocation){
+    header("Location: " . $NewLocation);
+    exit;
+  }
+
   //Password encryption using blowfish algorithm
   function Password_Encryption($Password){
     $BlowFish_Hash_Format = "$2y$10$";

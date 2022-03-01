@@ -14,6 +14,13 @@
     //Adding some validation so the user doesn't enter false or leaving empty fields on the registration form
     if(empty($Username) && empty($Email) && empty($Password) && empty($ConfirmPassword)){
       $_SESSION["message"] = "All fields should be filled out!";
+      Redirect_To("user_registration.php");
+    } elseif($Password !== $ConfirmPassword){
+      $_SESSION["message"] = "Password and confirm password do not match!";
+      Redirect_To("user_registration.php");
+    } elseif(strlen($Password) < 4){
+      $_SESSION["message"] = "Password should be at least 4 character long!";
+      Redirect_To("user_registration.php");
     }
   }
 ?>
