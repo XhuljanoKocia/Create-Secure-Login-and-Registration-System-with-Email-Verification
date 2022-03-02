@@ -44,4 +44,18 @@
       return false;
     }
   }
+
+  //Login function, checking if the email and password match with our database
+  function Login_Attempt($Email, $Password){
+    global $Connection;
+    $Query = "SELECT * FROM admin_panel WHERE email = '$Email'"; //We select the data from the database using the email parameter
+    $Execute = mysqli_query($Connection, $Query);
+    if($admin = mysqli_fetch_assoc($Execute)){ //We fetch all the data from the database reguarding that email address and assign it to a variable $admin
+      if(Password_Check($Password, $admin["password"])){ //We can verify the password from the $admin variable superglobal that we got from the email
+        return $admin;
+      }
+    } else {
+      return null;
+    }
+  }
 ?>
