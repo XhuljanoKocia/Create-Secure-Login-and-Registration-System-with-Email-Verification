@@ -21,10 +21,13 @@
     } elseif(strlen($Password) < 4){
       $_SESSION["message"] = "Password should be at least 4 character long!";
       Redirect_To("user_registration.php");
+    } elseif(CheckEmail($Email)){
+      $_SESSION["message"] = "This Email is already registered!";
+      Redirect_To("user_registration.php");
     } else {
       //Adding the user information into the database
-      global $ConnectingDB;
-      $Query = "INSERT INTO admin_panel(username, email, password) VALUES ('$Username', '$Email', '$Password')";
+      $Hashed_Password = Password_Encryption($Password); //We encrypt the password that is entered in the register form
+      $Query = "INSERT INTO admin_panel(username, email, password) VALUES ('$Username', '$Email', '$Hashed_Password')"; //We send the hashed password into our database
       $Execute = mysqli_query($Connection, $Query);
 
       //We show a message if the registration was successful or not
