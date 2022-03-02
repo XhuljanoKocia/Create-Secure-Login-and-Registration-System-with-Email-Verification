@@ -4,19 +4,21 @@
 <?php require_once("Include/db.php"); ?>
 
 <?php
+  //Getting the email and password value entered on submit form
   if(isset($_POST["Submit"])){
     $Email = mysqli_real_escape_string($Connection, $_POST["Email"]);
     $Password = mysqli_real_escape_string($Connection, $_POST["Password"]);
 
+    //Checking if any of the fields is empty
     if(empty($Email) || empty($Password)){
       $_SESSION["message"] = "All fields should be filled out!";
       Redirect_To("login.php");
     } else {
-        $Found_Account = Login_Attempt($Email, $Password);
+        $Found_Account = Login_Attempt($Email, $Password); //If fields aren't empty and email and password are correct we redirect the user to welcome page
         if($Found_Account){
             Redirect_To("welcome.php");
         } else {
-            $_SESSION["message"] = "Invalid Email or Password!";
+            $_SESSION["message"] = "Invalid Email or Password!"; //If any of the fields don't match we redirect the user to the login page again showing a message
             Redirect_To("login.php");
         }
     }

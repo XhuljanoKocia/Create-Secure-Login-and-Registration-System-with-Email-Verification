@@ -10,6 +10,7 @@
     $Email = mysqli_real_escape_string($Connection, $_POST["Email"]);
     $Password = mysqli_real_escape_string($Connection, $_POST["Password"]);
     $ConfirmPassword = mysqli_real_escape_string($Connection, $_POST["ConfirmPassword"]);
+    $Token = bin2hex(openssl_random_pseudo_bytes(40)); //Assign to $token a random binary to hexadecimal value
 
     //Adding some validation so the user doesn't enter false or leaving empty fields on the registration form
     if(empty($Username) && empty($Email) && empty($Password) && empty($ConfirmPassword)){
@@ -27,7 +28,7 @@
     } else {
       //Adding the user information into the database
       $Hashed_Password = Password_Encryption($Password); //We encrypt the password that is entered in the register form
-      $Query = "INSERT INTO admin_panel(username, email, password) VALUES ('$Username', '$Email', '$Hashed_Password')"; //We send the hashed password into our database
+      $Query = "INSERT INTO admin_panel(username, email, password, token, active) VALUES ('$Username', '$Email', '$Hashed_Password', '$Token', 'OFF')"; //We send the hashed password into our database
       $Execute = mysqli_query($Connection, $Query);
 
       //We show a message if the registration was successful or not
