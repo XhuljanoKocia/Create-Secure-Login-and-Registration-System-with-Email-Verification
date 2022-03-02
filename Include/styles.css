@@ -52,4 +52,18 @@
         text-align: center;
         margin-bottom: 1em;
     }
+
+    div.successmessage{
+        border: 2px solid #c0c0c0;
+        padding-top: 1em;
+        color: white;
+        background-color: #00a600;
+        font-weight: bold;
+        font-size: 1em;
+        margin: 0 auto;
+        width: 400px;
+        height: 40px;
+        text-align: center;
+        margin-bottom: 1em;
+    }
 </style>

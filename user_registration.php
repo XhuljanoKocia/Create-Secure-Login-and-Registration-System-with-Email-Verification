@@ -21,6 +21,20 @@
     } elseif(strlen($Password) < 4){
       $_SESSION["message"] = "Password should be at least 4 character long!";
       Redirect_To("user_registration.php");
+    } else {
+      //Adding the user information into the database
+      global $ConnectingDB;
+      $Query = "INSERT INTO admin_panel(username, email, password) VALUES ('$Username', '$Email', '$Password')";
+      $Execute = mysqli_query($Connection, $Query);
+
+      //We show a message if the registration was successful or not
+      if($Execute){
+        $_SESSION["successmessage"] = "Registration was successful!";
+        Redirect_To("user_registration.php");
+      } else {
+        $_SESSION["message"] = "Something went wrong, please try again!";
+        Redirect_To("user_registration.php");
+      }
     }
   }
 ?>
@@ -34,7 +48,10 @@
   <title>Register Now</title>
 </head>
 <body>
-  <div><?php echo Message(); ?></div>
+  <div>
+    <?php echo Message(); ?>
+    <?php echo SuccessMessage(); ?>
+  </div>
   <div id="centerpage">
     <!-- We create a simple registration form -->
     <form action="user_registration.php" method="post">
