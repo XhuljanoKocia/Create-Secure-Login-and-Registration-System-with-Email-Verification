@@ -58,4 +58,16 @@
       return null;
     }
   }
+
+  //Checking if we have any user on the database that has the value of active ON
+  function ConfirmingAccountActiveStatus(){
+    global $Connection;
+    $Query = "SELECT * FROM admin_panel WHERE active = 'ON'";
+    $Execute = mysqli_query($Connection, $Query);
+    if(mysqli_num_rows($Execute) > 0){
+      return true;
+    } else {
+      return false;
+    }
+  }
 ?>

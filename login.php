@@ -14,14 +14,19 @@
       $_SESSION["message"] = "All fields should be filled out!";
       Redirect_To("login.php");
     } else {
-        $Found_Account = Login_Attempt($Email, $Password); //If fields aren't empty and email and password are correct we redirect the user to welcome page
-        if($Found_Account){
-            Redirect_To("welcome.php");
+        if(ConfirmingAccountActiveStatus()){ //Only the users who have the active status to ON can login
+          $Found_Account = Login_Attempt($Email, $Password); //If fields aren't empty and email and password are correct we redirect the user to welcome page
+          if($Found_Account){
+              Redirect_To("welcome.php");
+          } else {
+              $_SESSION["message"] = "Invalid Email or Password!"; //If any of the fields don't match we redirect the user to the login page again showing a message
+              Redirect_To("login.php");
+          }
         } else {
-            $_SESSION["message"] = "Invalid Email or Password!"; //If any of the fields don't match we redirect the user to the login page again showing a message
-            Redirect_To("login.php");
+          $_SESSION["message"] = "Account confirmation required!"; //If the account confirmation is not done we redirect the user to the login page again showing a message
+          Redirect_To("login.php");
         }
-    }
+      }
   }
 ?>
 
