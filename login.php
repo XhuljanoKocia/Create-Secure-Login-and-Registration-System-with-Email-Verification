@@ -17,6 +17,10 @@
         if(ConfirmingAccountActiveStatus()){ //Only the users who have the active status to ON can login
           $Found_Account = Login_Attempt($Email, $Password); //If fields aren't empty and email and password are correct we redirect the user to welcome page
           if($Found_Account){
+              $_SESSION["User_Id"] = $Found_Account['id']; //We user session superglobal to access all the user information from the database so that we can access them on the welcome page
+              $_SESSION["User_Name"] = $Found_Account['username'];
+              $_SESSION["User_Email"] = $Found_Account['email'];
+
               Redirect_To("welcome.php");
           } else {
               $_SESSION["message"] = "Invalid Email or Password!"; //If any of the fields don't match we redirect the user to the login page again showing a message

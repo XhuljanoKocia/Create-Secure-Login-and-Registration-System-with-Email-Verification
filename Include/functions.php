@@ -70,4 +70,17 @@
       return false;
     }
   }
+
+  function login(){
+    if(isset($_SESSION["User_Id"])){ //Checking if we have a user ID session open
+      return true;
+    }
+  }
+
+  function Confirm_Login(){
+    if(!login()){
+      $_SESSION["message"] = "You have to Login!"; //If we don't have a user ID we redirect them to login page so that they can't access anything without loging in
+      Redirect_To("login.php");
+    }
+  }
 ?>
