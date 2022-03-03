@@ -67,6 +67,7 @@
   </div>
   <div id="centerpage">
     <!-- We create a simple registration form -->
+    <br><a href="login.php"><span class="FieldInfo">Already a member? Login Now!</span></a><br><br>
     <form action="user_registration.php" method="post">
       <fieldset>
         <span class="FieldInfo">Username:</span><br><input type="text" name="Username" value=""><br>

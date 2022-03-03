@@ -56,6 +56,7 @@
   </div>
   <div id="centerpage">
     <!-- We create a simple login form -->
+    <br><a href="user_registration.php"><span class="FieldInfo">Don't have an account? Create One!</span></a><br><br>
     <form action="login.php" method="post">
       <fieldset>
         <span class="FieldInfo">Email:</span><br><input type="email" name="Email" value=""><br>
