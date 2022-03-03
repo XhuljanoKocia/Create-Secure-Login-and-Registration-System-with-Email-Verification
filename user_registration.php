@@ -33,8 +33,17 @@
 
       //We show a message if the registration was successful or not
       if($Execute){
-        $_SESSION["successmessage"] = "Registration was successful!";
-        Redirect_To("user_registration.php");
+        //Once the registration is successful we send an activation link to the clients email address containing the token we generate above
+        $subject = "Confirm Account";
+        $body = 'Hi' . $Username . ', here is the link to activate your account http://localhost/login-and-register/user_registration/activate.php?token='.$Token;
+        $senderEmail = "From:gyroballtrunks@gmail.com";
+        if(mail($Email, $subject, $body, $senderEmail)){
+          $_SESSION["successmessage"] = "Check Email for Activation!";
+          Redirect_To("login.php");
+        } else {
+          $_SESSION["message"] = "Something went wrong, please try again!";
+          Redirect_To("user_registration.php");
+        }
       } else {
         $_SESSION["message"] = "Something went wrong, please try again!";
         Redirect_To("user_registration.php");
