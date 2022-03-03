@@ -21,6 +21,13 @@
               $_SESSION["User_Name"] = $Found_Account['username'];
               $_SESSION["User_Email"] = $Found_Account['email'];
 
+              //We set a cookie if the remember me checkbox is marked
+              if(isset($_POST["Remember"])){
+                $ExpireTime = time() + 86400; //Setting the cookie time for 1 day, time is in seconds
+                setcookie("SettingEmail", $Email, $ExpireTime); //We are setting a cookie for the email address which is unique
+                setcookie("SettingName", $Username, $ExpireTime); //We are setting a cookie for the name
+              }
+
               Redirect_To("welcome.php");
           } else {
               $_SESSION["message"] = "Invalid Email or Password!"; //If any of the fields don't match we redirect the user to the login page again showing a message
@@ -53,6 +60,7 @@
       <fieldset>
         <span class="FieldInfo">Email:</span><br><input type="email" name="Email" value=""><br>
         <span class="FieldInfo">Password:</span><br><input type="password" name="Password" value=""><br>
+        <input type="checkbox" name="Remember"><span class="FieldInfo"> &nbsp;Remember me</span><br>
         <input type="Submit" name="Submit" value="Login"><br>
     </form>
   </div>

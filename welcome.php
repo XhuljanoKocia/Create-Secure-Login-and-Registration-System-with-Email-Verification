@@ -13,7 +13,13 @@
 <body>
     <?php
         //We check all the information we got from the login page
-        echo "My id is " . $_SESSION["User_Id"] . "with the name of " . $_SESSION["User_Name"] . "with the email" . $_SESSION["User_Email"];
+        if(isset($_SESSION["User_Id"])){
+            echo "My id is " . $_SESSION["User_Id"] . "with the name of " . $_SESSION["User_Name"] . "with the email" . $_SESSION["User_Email"];
+        }
+
+        if(isset($_COOKIE["SettingName"])){
+            echo "<h1>{$_COOKIE["SettingName"]}</h1>";
+        }
     ?>
 
     <h1>Welcome</h1>

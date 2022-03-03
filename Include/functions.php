@@ -72,7 +72,7 @@
   }
 
   function login(){
-    if(isset($_SESSION["User_Id"])){ //Checking if we have a user ID session open
+    if(isset($_SESSION["User_Id"]) || isset($_COOKIE["SettingEmail"])){ //Checking if we have a user ID session open or if a cookie is set with the remember me checkbox
       return true;
     }
   }
