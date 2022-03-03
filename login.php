@@ -61,6 +61,7 @@
         <span class="FieldInfo">Email:</span><br><input type="email" name="Email" value=""><br>
         <span class="FieldInfo">Password:</span><br><input type="password" name="Password" value=""><br>
         <input type="checkbox" name="Remember"><span class="FieldInfo"> &nbsp;Remember me</span><br>
+        <br><a href="recover_account.php"><span class="FieldInfo">Forgot Password?</span></a>
         <input type="Submit" name="Submit" value="Login"><br>
     </form>
   </div>
